@@ -16,6 +16,9 @@
     if ($_GET['error'] == 1) {
         echo "<p style='color: red;'>Incorrect username or password. Please try again.</p>";
     }
+    if ($_GET['logout'] == 1) {
+        echo "<p>You have succesfully logged out.</p>";
+    }
     ?>
 </body>
 

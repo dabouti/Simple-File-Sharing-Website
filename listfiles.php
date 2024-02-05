@@ -1,6 +1,10 @@
 <?php
 session_start();
 $username = $_SESSION['username'];
+if( !preg_match('/^[\w_\-]+$/', $username) ){
+	header("Location: loginpage.php?error=1");
+	exit;
+}
 $path = "/srv/protected/$username";
 $files = array_diff(scandir($path), array('.', '..'));
 echo "<h2>Files in $username's directory</h2>";
@@ -29,7 +33,9 @@ echo "</ul>";
 		<input type="submit" value="Upload File" />
 	</p>
 </form>
-
+<form action="logout.php" method="GET">
+<button>Logout</button>
+</form>
 <?php
 if($_GET['success'] == 1) {
     echo "<p>Successful Upload!</p>";
@@ -45,5 +51,11 @@ if($_GET['error'] == 2) {
 }
 if($_GET['error'] == 3) {
     echo "<p>Invalid username</p>";
+}
+if($_GET['error'] == 4) {
+    echo "<p>Unable to delete file</p>";
+}
+if($_GET['error'] == 5) {
+    echo "<p>File does not exist.</p>";
 }
 ?>

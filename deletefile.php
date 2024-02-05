@@ -1,12 +1,21 @@
 <?php
+session_start();
+$username = $_SESSION['username'];
 $filename = $_GET['file'];
-if (file_exists($filename)) {
-    if (unlink($filename)) {
-        echo "File $filename has been deleted.";
+
+if( !preg_match('/^[\w_\-]+$/', $username) ){
+	header("Location: listfiles.php?error=3");
+	exit;
+}
+
+if (file_exists("/srv/protected/$username/$filename")) {
+    if (unlink("/srv/protected/$username/$filename")) {
+        header("Location: listfiles.php?success=2");
+        exit;
     } else {
-        echo "Unable to delete $filename.";
+        header("Location: listfiles.php?error=4");
     }
 } else {
-    echo "File $filename does not exist.";
+    header("Location: listfiles.php?error=5");
 }
 ?>

@@ -6,7 +6,7 @@ $filename = $_GET['file'];
 // We need to make sure that the filename is in a valid format; if it's not, display an error and leave the script.
 // To perform the check, we will use a regular expression.
 if( !preg_match('/^[\w_\.\-]+$/', $filename) ){
-	echo "Invalid filename";
+	header("Location: listfiles.php?error=2");
 	exit;
 }
 
@@ -15,11 +15,15 @@ if( !preg_match('/^[\w_\.\-]+$/', $filename) ){
 // since we will be concatenating the string to load files from the filesystem.
 $username = $_SESSION['username'];
 if( !preg_match('/^[\w_\-]+$/', $username) ){
-	echo "Invalid username";
+	header("Location: listfiles.php?error=3");
 	exit;
 }
 
 $full_path = sprintf("/srv/protected/%s/%s", $username, $filename);
+
+if(!file_exists($full_path)) {
+	header("Location: listfiles.php?error=5");
+}
 
 // Now we need to get the MIME type (e.g., image/jpeg).  PHP provides a neat little interface to do this called finfo.
 $finfo = new finfo(FILEINFO_MIME_TYPE);
