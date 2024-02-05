@@ -8,10 +8,15 @@
 </head>
 
 <body>
-    <form action="auth.php" method="GET">
+    <form action="loginauth.php" method="GET">
         <input type="text" name="username" id="username" placeholder="Username">
         <button type="submit">Login</button>
     </form>
+    <?php
+    if ($_GET['error'] == 1) {
+        echo "<p style='color: red;'>Incorrect username or password. Please try again.</p>";
+    }
+    ?>
 </body>
 
 </html>

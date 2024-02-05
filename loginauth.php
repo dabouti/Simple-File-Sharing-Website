@@ -1,11 +1,15 @@
 <?php
+session_start();
 $username = $_GET['username'];
+$_SESSION['username'] = $username;
 $filePath = "/srv/protected/users.txt";
 $usernames = file($filePath, FILE_IGNORE_NEW_LINES);
 if (in_array($username, $usernames)) {
-    header("Location: /srv/protected/$username");
+   header("Location: listfiles.php");
+   exit;
 }
 else {
-    echo "False";
+    header("Location: loginpage.php?error=1");
+    exit;
 }
 ?>
