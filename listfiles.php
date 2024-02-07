@@ -23,11 +23,11 @@
 				}
 				$username = $_SESSION['username'];
 				$files = array_diff(scandir("/srv/protected/$username"), array('.', '..')); //Retrieving the files in the directory and storing it into an array and removing the . and .. entries from the array
-				echo "<h2 class='border-bottom border-danger'>Files in $username's directory</h2>";
+				echo "<h2 class='border-bottom border-danger'>Files in " . htmlentities($username) . "'s directory</h2>";
 				echo "<ul>";
 
 				foreach ($files as $file) { //Displaying the files in the directory
-					echo "<li>$file</li>";
+					echo "<li>" . htmlentities($file) . "</li>";
 				}
 				echo "</ul>";
 				?>

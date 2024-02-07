@@ -1,6 +1,11 @@
 <?php
 session_start();
 $username = $_GET['username']; //Retrieving username from the loginpage.php form
+if (!preg_match('/^[\w_\-]+$/', $username)) {
+    $_SESSION['error'] = 'invalid username';
+    header("Location: listfiles.php");
+    exit;
+}
 $_SESSION['username'] = $username;
 $filePath = "/srv/protected/users.txt";
 $usernames = file($filePath, FILE_IGNORE_NEW_LINES); //Reading the users.txt file into an array
