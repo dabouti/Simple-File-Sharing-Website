@@ -21,4 +21,16 @@ User Login Details: <b> admin, guest, user </b>
   
 3. We implemented Bootstrap, a front-end framework, into our website design. We did some experiments with the website grids and the colors of our buttons and page layouts to ensure that our website is visually appealing.
 
+In Bootstrap, these classes create rows and columns inside a container to align and organize the components. 
+
+![image](https://github.com/cse330-spring-2024/module2-group-508428-509768/assets/112195598/a429ee76-39b0-4933-af47-4697809186bd)
+
+These classes styles the form and changes the color of the button to a color you want from different options provided by Bootstrap. 
+
+![image](https://github.com/cse330-spring-2024/module2-group-508428-509768/assets/112195598/567bdfb5-f815-4d64-8c1c-dd14d54a2426)
+
+
+
+
+
    
