@@ -4,8 +4,8 @@ if ($_SESSION['loggedin'] != true) {
     header("Location: loginpage.php");
     exit;
 }
-$file = $_GET['file'];
-$filerename = $_GET['filerename'];
+$file = $_GET['file']; //Retrieving the filename from the form
+$filerename = $_GET['filerename']; //Retrieving the new filename from the form
 $username = $_SESSION['username'];
 if (!preg_match('/^[\w_\-]+$/', $username)) {
     $_SESSION['error'] = 'invalid username';
@@ -23,7 +23,7 @@ if (!preg_match('/^[\w_\.\-]+$/', $filerename)) {
     exit;
 }
 if (file_exists("/srv/protected/$username/$file")) {
-    rename("/srv/protected/$username/$file", "/srv/protected/$username/$filerename");
+    rename("/srv/protected/$username/$file", "/srv/protected/$username/$filerename"); //Renaming the file
     $_SESSION["success"] = "file renamed";
     header("Location: listfiles.php");
 } else {

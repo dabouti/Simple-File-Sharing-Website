@@ -8,6 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<!--Linking Bootstrap CSS-->
 </head>
 
 <body class="m-3 bg-body-secondary">
@@ -21,19 +22,18 @@
 					exit;
 				}
 				$username = $_SESSION['username'];
-				$path = "/srv/protected/$username";
-				$files = array_diff(scandir($path), array('.', '..'));
+				$files = array_diff(scandir("/srv/protected/$username"), array('.', '..')); //Retrieving the files in the directory and storing it into an array and removing the . and .. entries from the array
 				echo "<h2 class='border-bottom border-danger'>Files in $username's directory</h2>";
 				echo "<ul>";
 
-				foreach ($files as $file) {
+				foreach ($files as $file) { //Displaying the files in the directory
 					echo "<li>$file</li>";
 				}
 				echo "</ul>";
 				?>
 			</div>
 			<div class="col">
-				<form action="openfile.php" method="GET">
+				<form action="openfile.php" method="GET"> <!--Creating a form to send the filename to openfile.php-->
 					<div class="container mb-5 mt-5">
 						<div class="row">
 							<div class="col">
@@ -48,6 +48,7 @@
 
 
 				<form action="deletefile.php" method="GET">
+					<!--Creating a form to send the filename to deletefile.php-->
 					<div class="container mb-5">
 						<div class="row">
 							<div class="col">
@@ -62,6 +63,7 @@
 
 
 				<form action="renamefile.php" method="GET">
+					<!--Creating a form to send the filename to renamefile.php-->
 					<div class="container mb-5">
 						<div class="row">
 							<div class="col">
@@ -77,6 +79,7 @@
 					</div>
 				</form>
 				<form enctype="multipart/form-data" action="uploader.php" method="POST">
+					<!--Creating a form to upload a file-->
 					<div class="container">
 						<div class="row">
 							<div class="col">
@@ -90,7 +93,7 @@
 						</div>
 					</div>
 				</form>
-				<form action="logout.php" method="GET">
+				<form action="logout.php" method="GET"> <!--Creating a form to logout-->
 					<button class="btn btn-secondary m-3">Logout</button>
 				</form>
 			</div>

@@ -10,7 +10,7 @@
     <!--Linking Bootstrap CSS-->
 </head>
 
-<body class="m-3 bg-body-secondary"> <!--Adding margin and background color to the body-->
+<body class="m-3 bg-body-secondary">
     <h1>Login Page</h1>
     <form action="loginauth.php" method="GET"> <!--Creating a form to send the username to loginauth.php-->
         <div class="container m-0 mb-1 p-0"> <!--Using the Boostrap grid system to align the input and button-->
@@ -25,7 +25,6 @@
             </div>
         </div>
     </form>
-    <!--This is the end of the form. So in summary, I created a container inside the form, then a row inside the container, and then two columns inside the row which house each input.-->
 
     <?php
     session_start();

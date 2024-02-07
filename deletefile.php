@@ -5,7 +5,7 @@ if ($_SESSION['loggedin'] != true) {
     exit;
 }
 $username = $_SESSION['username'];
-$filename = $_GET['file'];
+$filename = $_GET['file']; //Retrieving the filename from the form
 
 if (!preg_match('/^[\w_\-]+$/', $username)) {
     $_SESSION['error'] = 'invalid username';
@@ -13,8 +13,8 @@ if (!preg_match('/^[\w_\-]+$/', $username)) {
     exit;
 }
 
-if (file_exists("/srv/protected/$username/$filename")) {
-    if (unlink("/srv/protected/$username/$filename")) {
+if (file_exists("/srv/protected/$username/$filename")) { //Checking if the file exists
+    if (unlink("/srv/protected/$username/$filename")) { //Deleting the file
         $_SESSION["success"] = "file deleted";
         header("Location: listfiles.php");
         exit;

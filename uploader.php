@@ -22,7 +22,7 @@ if (!preg_match('/^[\w_\-]+$/', $username)) {
 
 $i = 1;
 $temp = $filename;
-while (file_exists("/srv/protected/$username/$filename")) {
+while (file_exists("/srv/protected/$username/$filename")) { //if file exists, add a number to the start of the filename
 	$filename = $temp;
 	$filename = "$i-" . $filename;
 	$i++;
@@ -31,7 +31,7 @@ while (file_exists("/srv/protected/$username/$filename")) {
 $full_path = sprintf("/srv/protected/%s/%s", $username, $filename);
 
 
-if (move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $full_path)) {
+if (move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $full_path)) { //move the file to the directory
 	$_SESSION["success"] = "file uploaded";
 	header("Location: listfiles.php");
 	exit;
