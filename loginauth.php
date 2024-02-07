@@ -1,9 +1,5 @@
 <?php
 session_start();
-if ($_SESSION['loggedin'] != true) {
-    header("Location: loginpage.php");
-    exit;
-}
 $username = $_GET['username']; //Retrieving username from the loginpage.php form
 $_SESSION['username'] = $username;
 $filePath = "/srv/protected/users.txt";
