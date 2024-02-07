@@ -102,15 +102,15 @@
 	<?php
 	if ($_SESSION['success'] == 'file uploaded') {
 		echo "<p style='text-align: center;'>Successful Upload!</p>";
-		unset($_SESSION["error"]);
+		unset($_SESSION["success"]);
 	}
 	if ($_SESSION['success'] == 'file deleted') {
 		echo "<p style='text-align: center;'>Successful Deletion!</p>";
-		unset($_SESSION["error"]);
+		unset($_SESSION["success"]);
 	}
 	if ($_SESSION['success'] == 'file renamed') {
 		echo "<p style='text-align: center;'p>Successful Rename!</p>";
-		unset($_SESSION["error"]);
+		unset($_SESSION["success"]);
 	}
 	if ($_SESSION['error'] == 'file not uploaded') {
 		echo "<p style='text-align: center; color: red;'>ERROR: Failure to Upload!</p>";

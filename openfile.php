@@ -24,7 +24,7 @@ if (!preg_match('/^[\w_\-]+$/', $username)) {
 	exit;
 }
 
-$full_path = sprintf("/srv/protected/%s/%s", $username, $filename);
+$full_path = sprintf("/srv/protected/%s/%s", htmlentities($username), htmlentities($filename));
 
 if (!file_exists($full_path)) {
 	$_SESSION['error'] = 'file does not exist';

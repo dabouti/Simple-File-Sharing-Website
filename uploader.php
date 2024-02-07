@@ -28,7 +28,7 @@ while (file_exists("/srv/protected/$username/$filename")) { //if file exists, ad
 	$i++;
 }
 
-$full_path = sprintf("/srv/protected/%s/%s", $username, $filename);
+$full_path = sprintf("/srv/protected/%s/%s", htmlentities($username), htmlentities($filename));
 
 
 if (move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $full_path)) { //move the file to the directory
