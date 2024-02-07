@@ -1,28 +1,43 @@
 <?php
 session_start();
-
+if ($_SESSION['loggedin'] != true) {
+	header("Location: loginpage.php");
+	exit;
+}
 // Get the filename and make sure it is valid
 $filename = basename($_FILES['uploadedfile']['name']);
-if( !preg_match('/^[\w_\.\-]+$/', $filename) ){
-	header("Location: listfiles.php?error=2");
+if (!preg_match('/^[\w_\.\-]+$/', $filename)) {
+	$_SESSION['error'] = 'invalid filename';
+	header("Location: listfiles.php");
 	exit;
 }
 
 // Get the username and make sure it is valid
 $username = $_SESSION['username'];
-if( !preg_match('/^[\w_\-]+$/', $username) ){
-	header("Location: listfiles.php?error=3");
+if (!preg_match('/^[\w_\-]+$/', $username)) {
+	$_SESSION['error'] = 'invalid username';
+	header("Location: listfiles.php");
 	exit;
+}
+
+$i = 1;
+$temp = $filename;
+while (file_exists("/srv/protected/$username/$filename")) {
+	$filename = $temp;
+	$filename = "$i-" . $filename;
+	$i++;
 }
 
 $full_path = sprintf("/srv/protected/%s/%s", $username, $filename);
 
-if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $full_path) ){
-	header("Location: listfiles.php?success=1");
+
+if (move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $full_path)) {
+	$_SESSION["success"] = "file uploaded";
+	header("Location: listfiles.php");
 	exit;
-}else{
-	header("Location: listfiles.php?error=1");
+} else {
+	$_SESSION["error"] = "file not uploaded";
+	header("Location: listfiles.php");
 	exit;
 }
-
 ?>

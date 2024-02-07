@@ -1,21 +1,29 @@
 <?php
 session_start();
+if ($_SESSION['loggedin'] != true) {
+    header("Location: loginpage.php");
+    exit;
+}
 $username = $_SESSION['username'];
 $filename = $_GET['file'];
 
-if( !preg_match('/^[\w_\-]+$/', $username) ){
-	header("Location: listfiles.php?error=3");
-	exit;
+if (!preg_match('/^[\w_\-]+$/', $username)) {
+    $_SESSION['error'] = 'invalid username';
+    header("Location: listfiles.php");
+    exit;
 }
 
 if (file_exists("/srv/protected/$username/$filename")) {
     if (unlink("/srv/protected/$username/$filename")) {
-        header("Location: listfiles.php?success=2");
+        $_SESSION["success"] = "file deleted";
+        header("Location: listfiles.php");
         exit;
     } else {
-        header("Location: listfiles.php?error=4");
+        $_SESSION["error"] = "file not deleted";
+        header("Location: listfiles.php");
     }
 } else {
-    header("Location: listfiles.php?error=5");
+    $_SESSION["error"] = "file does not exist";
+    header("Location: listfiles.php");
 }
 ?>
