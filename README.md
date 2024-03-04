@@ -1,9 +1,3 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/TxSeEQdJ)
-# CSE330
-Andrew Feenstra 508428 andrewjf04
-
-David Kim 509768 dabouti
-
 File Sharing Site Link: http://ec2-3-14-141-57.us-east-2.compute.amazonaws.com/~afeenstra/loginpage.php
 
 Credit: https://getbootstrap.com/
