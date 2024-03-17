@@ -4,7 +4,6 @@ Credit: https://getbootstrap.com/
 
 User Login Details: <b> admin, guest, user </b>
 
-<h1>Creative Project:</h1>
 1. Created a feature where users can directly rename their existing files from their personal directory. The renaming feature is shown below.
    
    ![image](https://github.com/cse330-spring-2024/module2-group-508428-509768/assets/112195598/3730d8ee-e817-4235-91bb-74a88cb46d8e)
