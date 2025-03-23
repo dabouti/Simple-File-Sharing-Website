@@ -1,7 +1,3 @@
-File Sharing Site Link: http://ec2-3-14-141-57.us-east-2.compute.amazonaws.com/~afeenstra/loginpage.php
-
-Credit: https://getbootstrap.com/
-
 User Login Details: <b> admin, guest, user </b>
 
 1. Created a feature where users can directly rename their existing files from their personal directory. The renaming feature is shown below.
